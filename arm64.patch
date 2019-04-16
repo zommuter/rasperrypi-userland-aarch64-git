@@ -1,4 +1,30 @@
 diff --git a/buildme b/buildme
+index d0958a6..df132b6 100755
+--- a/buildme
++++ b/buildme
+@@ -1,6 +1,6 @@
+ #!/bin/bash
+ BUILDTYPE=Release
+-ARCH=`arch`
++ARCH=`uname -m`
+ ARM64=OFF
+ CMAKE_TOOLCHAIN_FILE=../../../makefiles/cmake/toolchains/arm-linux-gnueabihf.cmake
+ 
+diff --git a/buildme b/buildme
+index cee90a6..d7a487d 100755
+--- a/buildme
++++ b/buildme
+@@ -9,7 +9,7 @@ if [ "$1" = "--debug" ]; then
+ 	shift
+ fi
+ 
+-if [ "$1" = "--aarch64" ]; then
++if [ "$1" = "--aarch64" ] || [ "$ARCH" = "aarch64" ]; then
+ 	ARM64=ON
+ 	CMAKE_TOOLCHAIN_FILE=../../../makefiles/cmake/toolchains/aarch64-linux-gnu.cmake
+ 	shift
+
+diff --git a/buildme b/buildme
 index b8fd440..de712bc 100755
 --- a/buildme
 +++ b/buildme
